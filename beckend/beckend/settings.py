@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-js2dxf@6wb1dasl!7evk8is9kly9ggaqmn5cl+7hi6gcd-@nt2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# ALLOWED_HOSTS = ['beckend.herokuapp.com']
+ALLOWED_HOSTS = ['web-production-ddef.up.railway.app']
 
 
 
