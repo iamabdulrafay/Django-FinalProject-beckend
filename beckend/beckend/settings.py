@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-js2dxf@6wb1dasl!7evk8is9kly9ggaqmn5cl+7hi6gcd-@nt2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['web-production-ddef.up.railway.app']
+ALLOWED_HOSTS = ['web-production-ddef.up.railway.app', 'localhost', '127.0.0.1']
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://web-production-ddef.up.railway.app',
@@ -60,9 +61,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -152,6 +154,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+        'https://web-production-ddef.up.railway.app',
+
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
