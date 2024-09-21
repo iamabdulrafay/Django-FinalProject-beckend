@@ -32,12 +32,14 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-STATIC_URL="./static"
+STATIC_URL = '/static/'
 
-STATIC_ROOT=os.path.join(BASE_DIR,"staticfiles")
+# The directory where static files will be collected
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,"static")
+# Additional directories to look for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),  # Adjust if you have a specific folder for static files
 ]
 # # Application definition
 
