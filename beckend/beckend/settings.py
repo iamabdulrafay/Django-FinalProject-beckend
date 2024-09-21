@@ -32,6 +32,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
 # The directory where static files will be collected
@@ -41,6 +42,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),  # Adjust if you have a specific folder for static files
 ]
+
 # # Application definition
 
 INSTALLED_APPS = [
