@@ -9,7 +9,7 @@ __pycache__/
 db.sqlite3
 *.log
 media/           # Exclude media folder
-staticfiles/
+# staticfiles/
 *.pot
 *.pyc
 *.pyo
