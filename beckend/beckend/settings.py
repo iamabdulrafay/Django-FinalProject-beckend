@@ -33,6 +33,18 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+# settings.py
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
@@ -56,7 +68,9 @@ INSTALLED_APPS = [
     
     'corsheaders',
     "course_app",
-    "auth_app"
+    "auth_app",
+    "chat_app",
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +83,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    #  'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
   
 
 
