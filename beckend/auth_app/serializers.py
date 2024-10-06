@@ -2,20 +2,18 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
-
 class SignupSerializers(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
         fields = ["username", "email", "password"]
 
     def create(self, validated_data):
-        # Create a new user with the validated data
         user = User.objects.create_user(
             username=validated_data["username"],
             email=validated_data["email"],
-            password=validated_data["password"],  # Fixed the typo here
+            password=validated_data["password"],
         )
         return user
 
@@ -29,7 +27,6 @@ class SignupSerializers(serializers.ModelSerializer):
             raise serializers.ValidationError("Email already exists.")
         return value
 
-
 class LoginSerializers(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
@@ -38,14 +35,11 @@ class LoginSerializers(serializers.Serializer):
         username = data.get('username')
         password = data.get('password')
 
-        if username and password:
-            user = authenticate(username=username, password=password)
-            if user is None:
-                raise serializers.ValidationError("Invalid username or password.")
-            if not user.is_active:
-                raise serializers.ValidationError("User is deactivated.")
-        else:
-            raise serializers.ValidationError("Must include both username and password.")
+        user = authenticate(username=username, password=password)
+        if user is None:
+            raise serializers.ValidationError("Invalid username or password.")
+        if not user.is_active:
+            raise serializers.ValidationError("User is deactivated.")
 
         data['user'] = user
         return data
