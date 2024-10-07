@@ -40,8 +40,8 @@ class LoginSerializerViewSets(APIView):
 
             return Response({
                 "msg": "Login successful",
-                "token": token.key,  # Return the token
-                "CSRFToken": get_token(request)
+                "authToken": token.key,  
+                "access_CSRFToken": get_token(request)
             }, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
